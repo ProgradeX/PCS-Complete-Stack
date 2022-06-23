@@ -1,0 +1,29 @@
+{
+  "name": "pcsreactexpress",
+  "version": "1.0.0",
+  "description": "PC Component Selector Application",
+  "main": "server.js",
+  "scripts": {
+    "client-install": "cd client && npm install",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "ZeroAki OPENSRC",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.14.6"
+  },
+  "dependencies": {
+    "antd": "^4.21.3",
+    "body-parser": "1.20.0",
+    "concurrently": "^7.2.1",
+    "cors": "^2.8.5",
+    "express": "4.18.1",
+    "msnodesqlv8": "^2.4.8",
+    "mssql": "^8.1.2",
+    "react-router-dom": "^6.3.0",
+    "tedious": "^14.5.0"
+  }
+}

@@ -1,0 +1,15 @@
+.tile {
+    padding: 5px;
+    border-bottom: 1px solid black;
+    border-right: 10px solid green;
+    transition: 0.2s;
+}
+
+.tile:hover {
+    background-color: rgb(100, 100, 100);
+}
+
+.definition, .selection {
+    text-align: left;
+    color: white;
+}
