@@ -10,6 +10,16 @@
     
 }
 
+.clearselection {
+  background-color: #353c77;
+  color: white;
+  width: 100%;
+  padding: 10px;
+}
+.clearselection :hover { 
+  background-color: #4a5296;
+}
+
 #listtable {
     border-collapse: collapse;
     width: 100%;
@@ -27,7 +37,7 @@
      transition: 0.2s;
   }
   #listtable tr:hover { 
-    background-color: #e7e7e7
+    background-color: #b4b4b4
   }
   #listtable th {
     padding-top: 12px;
@@ -35,4 +45,7 @@
     text-align: left;
     background-color: #353c77;
     color: white;
+  }
+  #listtable th:hover { 
+    background-color: #4a5296
   }

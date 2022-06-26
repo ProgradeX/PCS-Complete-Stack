@@ -1,29 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import './DBContent.css'
+import DataTable from './dataTable.js'
 
 const DBContent = (props) => {
 
   //retrieve all data
-  const [Tinfo, setTinfo] = useState([]);
   const [Tdata, setTdata] = useState([]);
-
-    // get table header data
-    const getTinfo=() => {
-        fetch(`/api/${props.optn}/`)
-        .then(function(response) {
-            console.log(response);
-            return response.json();
-        })
-        .then(function(myJson) {
-            console.log(myJson, ' This is HEADERS');
-            setTinfo(myJson);
-        });
-    }
-    // get table database record
     const getTdata=() => {
-      fetch(`/api/${props.optn}/data/`)
+      fetch(`/api/${props.optn}`)
       .then(function(response) {
-          console.log(response);
+          console.log(response, 'this is response');
           return response.json();
       })
       .then(function(newJson) {
@@ -34,10 +20,15 @@ const DBContent = (props) => {
 
     //update stuff
     useEffect(() => {
-      getTinfo();
-      getTdata();
-      console.log('data retrieved')
-  }, [props.optn]);
+      if (props.optn !== ''){
+        getTdata();
+      }
+    }, [props.optn]);
+
+
+    function changeSelected (part) {
+      props.updatePart(props.optn, part);
+    }
 
   return (
     <div>
@@ -45,22 +36,7 @@ const DBContent = (props) => {
         <h1 style={{color: 'white'}}>Select {[props.a ? 'a' : '']} {props.optn}</h1>
       </div>
       <div className="database">
-        <table id="listtable">
-          <tbody>
-          {console.log('table creating 2..')}
-            <tr key='0'>{Tinfo.map((c, inc) => <th key={inc}>{c.COLUMN_NAME}</th>)}</tr>
-            {console.log('table creating..')}
-            {Tdata.map((e)=> 
-            <tr key={e.acc_id+1}>
-              <td><button onClick={() => props.updatePart(props.optn, e.acc_name, e.acc_email, e.password)}>{e.acc_id}</button></td>
-              <td>{e.acc_name}</td>
-              <td>{e.acc_email}</td>
-              <td>{e.acc_password}</td>
-            </tr>
-            )}
-
-          </tbody>
-        </table>
+        {[Tdata.length > 1? <DataTable data={Tdata} Selected={changeSelected} /> : null]}
       </div>
     </div>
   )

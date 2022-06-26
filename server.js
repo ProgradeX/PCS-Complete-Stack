@@ -10,27 +10,40 @@ app.use('/api', router);
 app.use(cors());
 
 router.route('/accounts').get((request, response) => {
-  dboperations.getTableInfo().then(result => {
-      response.json(result[0]);
-  })
-})
-
-router.route('/accounts/data/').get((request, response) => {
   dboperations.getTableData().then(result => {
       response.json(result[0]);
   })
 })
 
-//WHEN IT GETS /api/customers IT WILL RESPOND WITH THIS JSON DATA
-app.get('/api/customers', cors(), (req, res) => {
-  const customers = [
-    {id: 1, firstName: 'John', lastName: 'Doe'},
-    {id: 2, firstName: 'Brad', lastName: 'Traversy'},
-    {id: 3, firstName: 'Mary', lastName: 'Swanson'},
-  ];
+router.route('/None').get((request, response) => {
+  response.json(null);
+})
 
-  res.json(customers);
-});
+router.route('/CPU').get((request, response) => {
+  dboperations.getCPUdata().then(result => {
+      response.json(result[0]);
+  })
+})
+
+//request single
+router.route('/CPU/:id').get((request, response) => {
+  dboperations.getOneCPUdata(request.params.id).then(result => {
+      response.json(result[0]);
+  })
+})
+
+router.route('/Memory').get((request, response) => {
+  dboperations.getMEMdata().then(result => {
+      response.json(result[0]);
+  })
+})
+
+//request single
+router.route('/Memory/:id').get((request, response) => {
+  dboperations.getOneMEMdata(request.params.id).then(result => {
+      response.json(result[0]);
+  })
+})
 
 const port = 5000;
 

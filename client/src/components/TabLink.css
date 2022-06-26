@@ -3,6 +3,9 @@
     border-bottom: 1px solid black;
     border-right: 10px solid green;
     transition: 0.2s;
+    display: flex;
+    align-items: left;
+    width: 100%;
 }
 
 .tile:hover {
@@ -12,4 +15,9 @@
 .definition, .selection {
     text-align: left;
     color: white;
+}
+
+.price {
+    color: green;
+    text-align: right;
 }

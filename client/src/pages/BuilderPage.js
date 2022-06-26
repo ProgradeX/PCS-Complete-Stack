@@ -12,7 +12,7 @@ function BuilderPage() {
 
     // on change of tabs
     const [A, changeA] = useState(false)
-    const [Windowname, changeWindowname] = useState('Accounts')
+    const [Windowname, changeWindowname] = useState('')
     const onSelect = (a, selected) => {
         console.log('i switched tab ', a)
         changeA(a)
@@ -20,30 +20,32 @@ function BuilderPage() {
     }
 
     //update subtext for after part select
-    const [CPU, updateCPU] = useState(['None Selected', 0, 0]);
-    const [MB, updateMB] =   useState(['None Selected', 0, 0]);
-    const [MEM, updateMEM] = useState(['None Selected', 0, 0]);
-    const [STO, updateSTO] = useState(['None Selected', 0, 0]);
-    const [CSE, updateCSE] = useState(['None Selected', 0, 0]);
+    const [CPU, updateCPU] = useState('')
+    const [MB, updateMB] =   useState('')
+    const [MEM, updateMEM] = useState('')
+    const [STO, updateSTO] = useState('')
+    const [CSE, updateCSE] = useState('')
 
 
-    function switchPart(category, name, id, price){
+    function switchPart(category, part){
         console.log(category);
         switch(category) {
-            case 'Accounts':     
-                updateCPU([name, id, price]);
+            case 'CPU':     
+                console.log(part)
+                updateCPU(part["cpu_id"]);
                 break;
             case 'Motherboard': 
-                updateMB([name, id, price]);
+                updateMB([part[0]]);
                 break;
             case 'Memory':      
-                updateMEM([name, id, price]);
+                console.log(part)
+                updateMEM(part["ram_id"]);
                 break;
             case 'Storage':     
-                updateSTO([name, id, price]);
+                updateSTO([part]);
                 break;
             case 'Casing':
-                updateCSE([name, id, price]);
+                updateCSE([part]);
                 break;
             default:
                 console.log('idk what u on about bruh')
@@ -57,14 +59,13 @@ function BuilderPage() {
                 <div className="info-container">
                     <p>build ID: {buildID} <br/>Compatibility: {compstate} <br/>Wattage: {watts} W</p>
                 </div>
-                {console.log('all tabs rerendered')}
-                <TabLink main="CPU"         a={true}    sub={CPU[0]}      onClick={() => {changeWindowname('CPU')}}/>
-                <TabLink main="Motherboard" a={true}    sub={MB[0]}      onSelect={onSelect}/>
-                <TabLink main="Memory"      a={false}   sub={MEM[0]}      onSelect={onSelect}/>
-                <TabLink main="Storage"     a={false}   sub={STO[0]}      onSelect={onSelect}/>
-                <TabLink main="Video Card"  a={true}    sub={'none'}      onSelect={onSelect}/>
-                <TabLink main="Casing"      a={true}    sub={CSE[0]}      onSelect={onSelect}/>
-                <TabLink main="PSU"         a={false}   sub={'none'}      onSelect={onSelect}/>
+                <TabLink main="CPU"         a={true}    part={CPU}      onSelect={onSelect}/>
+                <TabLink main="Motherboard" a={true}    part={MB}       onSelect={onSelect}/>
+                <TabLink main="Memory"      a={false}   part={MEM}      onSelect={onSelect}/>
+                <TabLink main="Storage"     a={false}   part={STO}      onSelect={onSelect}/>
+                <TabLink main="Video Card"  a={true}    part={''}   onSelect={onSelect}/>
+                <TabLink main="Casing"      a={true}    part={CSE}      onSelect={onSelect}/>
+                <TabLink main="PSU"         a={false}   part={''}   onSelect={onSelect}/>
             </div>
             <div className="dbcontent">
                 <DBContent optn={Windowname} a={A} updatePart={switchPart}/>
