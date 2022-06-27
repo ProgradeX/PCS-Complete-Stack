@@ -21,24 +21,27 @@ function BuilderPage() {
 
     //update subtext for after part select
     const [CPU, updateCPU] = useState('')
+    const [CLR, updateCLR] = useState('')
     const [MB, updateMB] =   useState('')
     const [MEM, updateMEM] = useState('')
     const [STO, updateSTO] = useState('')
     const [CSE, updateCSE] = useState('')
+    const [PSU, updatePSU] = useState('')
 
 
     function switchPart(category, part){
         console.log(category);
         switch(category) {
             case 'CPU':     
-                console.log(part)
                 updateCPU(part["cpu_id"]);
+                break;
+            case 'Cooler':     
+                updateCLR(part["cooler_id"]);
                 break;
             case 'Motherboard': 
                 updateMB([part[0]]);
                 break;
             case 'Memory':      
-                console.log(part)
                 updateMEM(part["ram_id"]);
                 break;
             case 'Storage':     
@@ -46,6 +49,9 @@ function BuilderPage() {
                 break;
             case 'Casing':
                 updateCSE([part]);
+                break;
+            case 'PSU':
+                updatePSU([part["psu_id"]]);
                 break;
             default:
                 console.log('idk what u on about bruh')
@@ -60,12 +66,13 @@ function BuilderPage() {
                     <p>build ID: {buildID} <br/>Compatibility: {compstate} <br/>Wattage: {watts} W</p>
                 </div>
                 <TabLink main="CPU"         a={true}    part={CPU}      onSelect={onSelect}/>
+                <TabLink main="Cooler"      a={true}    part={CLR}      onSelect={onSelect}/>
                 <TabLink main="Motherboard" a={true}    part={MB}       onSelect={onSelect}/>
                 <TabLink main="Memory"      a={false}   part={MEM}      onSelect={onSelect}/>
                 <TabLink main="Storage"     a={false}   part={STO}      onSelect={onSelect}/>
                 <TabLink main="Video Card"  a={true}    part={''}   onSelect={onSelect}/>
                 <TabLink main="Casing"      a={true}    part={CSE}      onSelect={onSelect}/>
-                <TabLink main="PSU"         a={false}   part={''}   onSelect={onSelect}/>
+                <TabLink main="PSU"         a={false}   part={PSU}   onSelect={onSelect}/>
             </div>
             <div className="dbcontent">
                 <DBContent optn={Windowname} a={A} updatePart={switchPart}/>
