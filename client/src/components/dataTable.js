@@ -1,7 +1,7 @@
 import React from 'react'
 import './DBContent.css'
 
-const dataTablenew = ( {data, Selected} ) => {
+const dataTable = ( {data, Selected} ) => {
 
     function getKeys() {
         return Object.keys(data[0])
@@ -31,10 +31,10 @@ const dataTablenew = ( {data, Selected} ) => {
 
   return (
     <div>
-        <div className="clearselection" onClick={e => Selected([])}>Clear Selection</div>
+        <div className="clearselection" onClick={e => Selected('')}>Clear Selection</div>
         <table id="listtable">
             <thead>
-                <tr>{getHeader()}</tr>
+                <tr key="0">{getHeader()}</tr>
             </thead>
             <tbody>
                 {getRowsData()}
@@ -44,4 +44,4 @@ const dataTablenew = ( {data, Selected} ) => {
   )
 }
 
-export default dataTablenew
+export default dataTable

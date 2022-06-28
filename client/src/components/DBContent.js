@@ -5,7 +5,7 @@ import DataTable from './dataTable.js'
 const DBContent = (props) => {
 
   //retrieve all data
-  const [Tdata, setTdata] = useState([]);
+  const [Tdata, setTdata] = useState('');
     const getTdata=() => {
       fetch(`/api/${props.optn}`)
       .then(function(response) {
@@ -20,7 +20,7 @@ const DBContent = (props) => {
 
     //update stuff
     useEffect(() => {
-      if (props.optn !== ''){
+      if (props.optn !== 'Tab to begin!'){
         getTdata();
       }
     }, [props.optn]);
@@ -36,7 +36,7 @@ const DBContent = (props) => {
         <h1 style={{color: 'white'}}>Select {[props.a ? 'a' : '']} {props.optn}</h1>
       </div>
       <div className="database">
-        {[Tdata.length > 1? <DataTable data={Tdata} Selected={changeSelected} /> : null]}
+        {[Tdata !== ''? <DataTable data={Tdata} Selected={changeSelected} /> : null]}
       </div>
     </div>
   )

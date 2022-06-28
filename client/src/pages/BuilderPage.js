@@ -4,15 +4,15 @@ import { useState } from 'react'
 
 import TabLink from '../components/TabLink'
 import DBContent from '../components/DBContent'
+import InfoContainer from '../components/InfoContainer'
+
 
 function BuilderPage() {
-    const buildID = 1234;
-    const compstate = 'OK';
-    const watts = 0;
 
     // on change of tabs
-    const [A, changeA] = useState(false)
-    const [Windowname, changeWindowname] = useState('')
+    const [A, changeA] = useState(true)
+    const [Windowname, changeWindowname] = useState('Tab to begin!')
+
     const onSelect = (a, selected) => {
         console.log('i switched tab ', a)
         changeA(a)
@@ -67,7 +67,7 @@ function BuilderPage() {
         <div className="BuilderPageContent">
             <div className="sidenav">
                 <div className="info-container">
-                    <p>build ID: {buildID} <br/>Compatibility: {compstate} <br/>Wattage: {watts} W</p>
+                    <InfoContainer parts={[CPU, CLR, MB, MEM, STO, GPU, CSE, PSU]}/>
                 </div>
                 <TabLink main="CPU"         a={true}    part={CPU}      onSelect={onSelect}/>
                 <TabLink main="Cooler"      a={true}    part={CLR}      onSelect={onSelect}/>

@@ -16,7 +16,7 @@ async function getTableData(){
 async function getCPUdata(){
   try{
     let pool = await sql.connect(config);
-    let products = await pool.request().query("SELECT pid, pname, pprice, cpu_cores, cpu_threads, cpu_speed FROM Part_cpu")
+    let products = await pool.request().query("SELECT * FROM Part_cpu")
     return products.recordsets;
   }
   catch (error) {
