@@ -15,7 +15,7 @@ router.route('/accounts').get((request, response) => {
   })
 })
 
-router.route('/None').get((request, response) => {
+router.route('/').get((request, response) => {
   response.json(null);
 })
 
@@ -43,6 +43,18 @@ router.route('/Cooler/:id').get((request, response) => {
   })
 })
 
+//MOTHERBOARD DATA FETCH FROM API
+router.route('/Motherboard').get((request, response) => {
+  dboperations.getMBdata().then(result => {
+      response.json(result[0]);
+  })
+})
+router.route('/Motherboard/:id').get((request, response) => {
+  dboperations.getOneMBdata(request.params.id).then(result => {
+      response.json(result[0]);
+  })
+})
+
 //MEMORY DATA FETCH FROM API
 router.route('/Memory').get((request, response) => {
   dboperations.getMEMdata().then(result => {
@@ -51,6 +63,42 @@ router.route('/Memory').get((request, response) => {
 })
 router.route('/Memory/:id').get((request, response) => {
   dboperations.getOneMEMdata(request.params.id).then(result => {
+      response.json(result[0]);
+  })
+})
+
+//STORAGE DATA FETCH FROM API
+router.route('/Storage').get((request, response) => {
+  dboperations.getStoragedata().then(result => {
+      response.json(result[0]);
+  })
+})
+router.route('/Storage/:id').get((request, response) => {
+  dboperations.getOneStoragedata(request.params.id).then(result => {
+      response.json(result[0]);
+  })
+})
+
+//GPU DATA FETCH FROM API
+router.route('/Video%20Card').get((request, response) => {
+  dboperations.getGPUdata().then(result => {
+      response.json(result[0]);
+  })
+})
+router.route('/Video%20Card/:id').get((request, response) => {
+  dboperations.getOneGPUdata(request.params.id).then(result => {
+      response.json(result[0]);
+  })
+})
+
+//CASING DATA FETCH FROM API
+router.route('/Casing').get((request, response) => {
+  dboperations.getCSEdata().then(result => {
+      response.json(result[0]);
+  })
+})
+router.route('/Casing/:id').get((request, response) => {
+  dboperations.getOneCSEdata(request.params.id).then(result => {
       response.json(result[0]);
   })
 })

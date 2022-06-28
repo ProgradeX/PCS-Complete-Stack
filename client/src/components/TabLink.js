@@ -6,7 +6,7 @@ const TabLink = (props) => {
   const [Part, setPart] = useState([]);
 
   const getTdata=() => {
-    fetch(`/api/${props.main}/${props.part}`)
+    fetch(`/api/${props.main}/${props.part["pid"]}`)
     .then(function(response) {
         console.log(response, 'this is response');
         return response.json();
@@ -23,13 +23,9 @@ const TabLink = (props) => {
     }
   }, [props.part])
 
-  function getItem(data, i) {
+  function getItem(data, heading) {
     if (data) {
-      var heading = Object.keys(data)
-      return ( data[heading[i]] )
-    }
-    else {
-      return( 'None Selected' )
+      return ( data[heading] )
     }
   }
 
@@ -38,7 +34,8 @@ const TabLink = (props) => {
     <div className="tile" onClick={e => props.onSelect(props.a, props.main)}>
         <div className="subtile-2">
             <h2 className="definition">{props.main}</h2>
-            <p className="selection">{getItem(Part[0], 1)}</p>
+            <p className="selection">{[Part[0] ? getItem(Part[0], "pvendor") : '']} - {[Part[0] ? getItem(Part[0], "pname") : 'None Selected']}</p>
+            <p className="price">Rs. {[Part[0] ? getItem(Part[0], "pprice") : 0]}</p>
         </div>
     </div>
   )

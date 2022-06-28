@@ -25,6 +25,7 @@ function BuilderPage() {
     const [MB, updateMB] =   useState('')
     const [MEM, updateMEM] = useState('')
     const [STO, updateSTO] = useState('')
+    const [GPU, updateGPU] = useState('')
     const [CSE, updateCSE] = useState('')
     const [PSU, updatePSU] = useState('')
 
@@ -33,28 +34,31 @@ function BuilderPage() {
         console.log(category);
         switch(category) {
             case 'CPU':     
-                updateCPU(part["cpu_id"]);
+                updateCPU(part);
                 break;
             case 'Cooler':     
-                updateCLR(part["cooler_id"]);
+                updateCLR(part);
                 break;
             case 'Motherboard': 
-                updateMB([part[0]]);
+                updateMB(part);
                 break;
             case 'Memory':      
-                updateMEM(part["ram_id"]);
+                updateMEM(part);
                 break;
             case 'Storage':     
-                updateSTO([part]);
+                updateSTO(part);
+                break;
+            case 'Video Card':     
+                updateGPU(part);
                 break;
             case 'Casing':
-                updateCSE([part]);
+                updateCSE(part);
                 break;
             case 'PSU':
-                updatePSU([part["psu_id"]]);
+                updatePSU(part);
                 break;
             default:
-                console.log('idk what u on about bruh')
+                console.log('invalid part type or operation')
         }
     }
 
@@ -70,9 +74,9 @@ function BuilderPage() {
                 <TabLink main="Motherboard" a={true}    part={MB}       onSelect={onSelect}/>
                 <TabLink main="Memory"      a={false}   part={MEM}      onSelect={onSelect}/>
                 <TabLink main="Storage"     a={false}   part={STO}      onSelect={onSelect}/>
-                <TabLink main="Video Card"  a={true}    part={''}   onSelect={onSelect}/>
+                <TabLink main="Video Card"  a={true}    part={GPU}      onSelect={onSelect}/>
                 <TabLink main="Casing"      a={true}    part={CSE}      onSelect={onSelect}/>
-                <TabLink main="PSU"         a={false}   part={PSU}   onSelect={onSelect}/>
+                <TabLink main="PSU"         a={false}   part={PSU}      onSelect={onSelect}/>
             </div>
             <div className="dbcontent">
                 <DBContent optn={Windowname} a={A} updatePart={switchPart}/>
