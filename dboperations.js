@@ -12,6 +12,31 @@ async function getTableData(){
   }
 }
 
+async function InsertToDB(part) {
+  try {
+    let pool = await sql.connect(config);
+    let insertProduct = await pool.request()
+    .input('bacc', sql.Int, part)
+    .input('bname', sql.VarChar, part.buildname)
+    .input('bcost', sql.Int, part.buildcost)
+    .input('bwatts', sql.Int, part.buildwatts)
+    .input('bcpu', sql.Int, part.cpu)
+    .input('bcooler', sql.Int, part.clr)
+    .input('bmb', sql.Int, part.mb)
+    .input('bram', sql.Int, part.ram)
+    .input('bstorage', sql.Int, part.sto)
+    .input('bgpu', sql.Int, part.gpu)
+    .input('bcse', sql.Int, part.cse)
+    .input('bpsu', sql.Int, part.psu)
+    .execute('createbuild');
+    console.log('data entering...') //debug
+    return  insertProduct.recordsets;
+  }
+  catch (err) {
+    console.log('error occoured: ', err);
+  }
+}
+
 
 async function getCPUdata(){
   try{
@@ -207,6 +232,7 @@ async function getOnePSUdata(idee) {
 
 module.exports = {
     getTableData : getTableData,
+    InsertToDB : InsertToDB,
 
     getCPUdata : getCPUdata,
     getOneCPUdata : getOneCPUdata,

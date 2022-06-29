@@ -5,6 +5,9 @@
 ### Redux Version
 This version does not include Redux 
 
+### Database Configuration
+dbconfig.js is NOT configured to run on every local machine. Requires setting up SQL IP and Port with authentication 
+
 ## Quick Start
 
 ``` bash

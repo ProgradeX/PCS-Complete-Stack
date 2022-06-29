@@ -2,12 +2,43 @@ import React, { useEffect, useState } from 'react'
 
 import './InfoContainer.css'
 
-const InfoContainer = (props) => {
+const InfoContainer = ({parts}) => {
 
     const [buildprice, setBuildprice] = useState(0)
     const [buildwatts, setBuildwatts] = useState(0)
+    const [buildname, setBuildname] = useState('Default')
+
+    const acc = 1
 
     const [clist, Setclist] = useState([])
+
+
+    function onPublish (acc, buildname, buildcost, buildwatts, parts) {
+        console.log("working publish function")
+        const requestconfig = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                "acc": acc,
+                "buildname": buildname,
+                "buildcost": buildcost,
+                "buildwatts": buildwatts,
+                "cpu": parts[0]? parts[0]["pid"] : 'NULL',
+                "clr": parts[1]? parts[1]["pid"] : 'NULL',
+                "mb":  parts[2]? parts[2]["pid"] : 'NULL',
+                "ram": parts[3]? parts[3]["pid"] : 'NULL',
+                "sto": parts[4]? parts[4]["pid"] : 'NULL',
+                "gpu": parts[5]? parts[5]["pid"] : 'NULL',
+                "cse": parts[6]? parts[6]["pid"] : 'NULL',
+                "psu": parts[7]? parts[7]["pid"] : 'NULL',
+            })
+        };
+        fetch('/api/builds/', requestconfig)
+        // .then(response => response.json())
+        // .then(function(newJson) {
+        //     console.log('reply from POST request', newJson);
+        // });
+    }
 
     function calculateTotalPrice(item) {
         var sum = 0
@@ -49,15 +80,15 @@ const InfoContainer = (props) => {
 
     useEffect(() => {
         //update total price
-        setBuildprice(calculateTotalPrice(props.parts))
+        setBuildprice(calculateTotalPrice(parts))
 
         //update compatibility
-        Setclist(checkCompatibility(props.parts))
+        Setclist(checkCompatibility(parts))
 
         //Wattage calculation
-        setBuildwatts(EstimatedWattage(props.parts))
+        setBuildwatts(EstimatedWattage(parts))
 
-    }, props.parts)
+    }, parts)
 
     const RenderIssues = ({issues}) =>{
         return issues.map((issue ,index) => {
@@ -71,8 +102,8 @@ const InfoContainer = (props) => {
 
   return (
     <div className="infocontainer">
-        <input type="text" placeholder="Enter Build Name"/>
-        <button className="buttonm">Publish</button>
+        <input type="text" placeholder="Enter Build Name" value={buildname}/>
+        <button onClick={() => onPublish(acc, buildname, buildprice, buildwatts, parts)}>Publish</button>
         <p className="price">Total Price Rs. <span>{buildprice}</span> <br/> Wattage: <span>{buildwatts}</span></p>
         <RenderIssues issues={clist}/>
     </div>

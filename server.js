@@ -1,11 +1,15 @@
 const express = require('express');
 const cors = require('cors');
+const bodyparser = require('body-parser');
 
 const app = express();
 const router = express.Router();
 const dboperations = require('./dboperations');
 
 //configurations
+app.use(bodyparser.urlencoded({ extended: false }));
+app.use(bodyparser.json());
+
 app.use('/api', router);
 app.use(cors());
 
@@ -17,6 +21,15 @@ router.route('/accounts').get((request, response) => {
 
 router.route('/').get((request, response) => {
   response.json(null);
+})
+
+//TABLE DATA INSERT
+router.route('/builds').post((request, response) => {
+  let build = {...request.body}
+
+  dboperations.InsertToDB(build).then(result => {
+      response.status(201).json(result);
+  })
 })
 
 //CPU DATA FETCH FROM API
