@@ -26,6 +26,7 @@ router.route('/').get((request, response) => {
 //TABLE DATA INSERT
 router.route('/builds').post((request, response) => {
   let build = {...request.body}
+  console.log(build)
 
   dboperations.InsertToDB(build).then(result => {
       response.status(201).json(result);

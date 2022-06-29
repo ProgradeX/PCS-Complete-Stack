@@ -5,13 +5,14 @@ import "antd/dist/antd.css";
 
 
 import BuilderPage from './pages/BuilderPage';
+import MainPage from './pages/MainPage';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header/>  
-        <BuilderPage/>
+        <Header />
+        <BuilderPage />
       </div>
     );
   }

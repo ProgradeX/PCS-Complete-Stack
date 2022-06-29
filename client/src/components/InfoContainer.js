@@ -6,7 +6,7 @@ const InfoContainer = ({parts}) => {
 
     const [buildprice, setBuildprice] = useState(0)
     const [buildwatts, setBuildwatts] = useState(0)
-    const [buildname, setBuildname] = useState('Default')
+    const [buildname, setBuildname] = useState('ProgradeX')
 
     const acc = 1
 
@@ -14,7 +14,6 @@ const InfoContainer = ({parts}) => {
 
 
     function onPublish (acc, buildname, buildcost, buildwatts, parts) {
-        console.log("working publish function")
         const requestconfig = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -34,10 +33,10 @@ const InfoContainer = ({parts}) => {
             })
         };
         fetch('/api/builds/', requestconfig)
-        // .then(response => response.json())
-        // .then(function(newJson) {
-        //     console.log('reply from POST request', newJson);
-        // });
+    }
+
+    function changeName (name) {
+        setBuildname(name);
     }
 
     function calculateTotalPrice(item) {
@@ -75,6 +74,9 @@ const InfoContainer = ({parts}) => {
         if (item[7] && (item[7]["psu_wattage"] < buildwatts * 2)){
             issues.push("Weak Power Supply, May cause system crashes")
         }
+        if ((item[2] && item[6]) && (item[2]["mb_ff"] !== item[6]["cse_ff"])) {
+            issues.push("Motherboard Size Different from Case Size");
+        }
         return (issues);
     }
 
@@ -102,9 +104,9 @@ const InfoContainer = ({parts}) => {
 
   return (
     <div className="infocontainer">
-        <input type="text" placeholder="Enter Build Name" value={buildname}/>
-        <button onClick={() => onPublish(acc, buildname, buildprice, buildwatts, parts)}>Publish</button>
-        <p className="price">Total Price Rs. <span>{buildprice}</span> <br/> Wattage: <span>{buildwatts}</span></p>
+        <input type="text" placeholder="Enter Build Name" onChange={() => changeName()}/>
+        <button className="buttonm" onClick={() => onPublish(acc, buildname, buildprice, buildwatts, parts)}>Publish</button>
+        <p>Total Price Rs. <span className="price">{buildprice}</span> <br/> Wattage: <span className="watts">{buildwatts}</span></p>
         <RenderIssues issues={clist}/>
     </div>
   )

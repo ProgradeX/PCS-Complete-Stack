@@ -1,0 +1,41 @@
+.panel-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.fpanel-container {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    padding: 8px;
+    margin: 8px;
+    background-color: rgb(76, 64, 121);
+    border-radius: 25px;
+}
+
+.panels-guides {
+    margin: 5px;
+    width: 25%;
+    height: 120px;
+    align-items: center;
+    background-color: rgb(47, 96, 119);
+    border-radius: 25px;
+}
+
+.panels-builds {
+    border-radius: 20px;
+    margin: 5px;
+    width: 50%;
+    align-items: center;
+    background-color: rgb(202, 202, 202);
+    color: black;
+}
+
+.panels-featured-message {
+    margin: 10px;
+    width: 50%;
+    height: 140px;
+    align-items: center;
+    justify-content: center;
+}
