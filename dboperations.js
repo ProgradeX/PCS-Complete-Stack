@@ -16,7 +16,7 @@ async function InsertToDB(part) {
   try {
     let pool = await sql.connect(config);
     let insertProduct = await pool.request()
-    .input('bacc', sql.Int, part)
+    .input('bacc', sql.Int, part.acc)
     .input('bname', sql.VarChar, part.buildname)
     .input('bcost', sql.Int, part.buildcost)
     .input('bwatts', sql.Int, part.buildwatts)

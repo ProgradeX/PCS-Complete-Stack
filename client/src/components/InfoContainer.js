@@ -36,6 +36,7 @@ const InfoContainer = ({parts}) => {
     }
 
     function changeName (name) {
+        console.log(name);
         setBuildname(name);
     }
 
@@ -104,7 +105,7 @@ const InfoContainer = ({parts}) => {
 
   return (
     <div className="infocontainer">
-        <input type="text" placeholder="Enter Build Name" onChange={() => changeName()}/>
+        <input type="text" placeholder="Enter Build Name" onChange={(e) => changeName(e.target.value)}/>
         <button className="buttonm" onClick={() => onPublish(acc, buildname, buildprice, buildwatts, parts)}>Publish</button>
         <p>Total Price Rs. <span className="price">{buildprice}</span> <br/> Wattage: <span className="watts">{buildwatts}</span></p>
         <RenderIssues issues={clist}/>

@@ -1,7 +1,7 @@
 import React from 'react'
 import BuildPanel from '../components/BuildPanel'
 import GuidePanel from '../components/GuidePanel'
-import './MainPage.css'
+import '../App.css'
 
 const MainPage = () => {
     const pstyle = {padding:80}
