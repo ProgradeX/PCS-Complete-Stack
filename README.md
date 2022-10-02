@@ -32,17 +32,17 @@ ProgradeX
 
 ## Details
 The project is built using the following tools
-- ![img1](https://github.com/ProgradeX/)
-- ![img2](https://github.com/ProgradeX/)
-- ![img3](https://github.com/ProgradeX/)
-- ![img4](https://github.com/ProgradeX/)
+- ![img1](https://github.com/ProgradeX/PCS-Complete-Stack/blob/master/Images/p1.png)
+- ![img2](https://github.com/ProgradeX/PCS-Complete-Stack/blob/master/Images/p2.png)
+- ![img3](https://github.com/ProgradeX/PCS-Complete-Stack/blob/master/Images/p3.png)
+- ![img4](https://github.com/ProgradeX/PCS-Complete-Stack/blob/master/Images/p4.png)
 
 Database Layout for Project 
-- ![img5](https://github.com/ProgradeX/)
+- ![img5](https://github.com/ProgradeX/PCS-Complete-Stack/blob/master/Images/p5.png)
 
 Web-App design with Json data
-- ![img6](https://github.com/ProgradeX/)
-- ![img7](https://github.com/ProgradeX/)
+- ![img6](https://github.com/ProgradeX/PCS-Complete-Stack/blob/master/Images/p6.png)
+- ![img7](https://github.com/ProgradeX/PCS-Complete-Stack/blob/master/Images/p7.png)
 
 ### Version
 1.0.0
