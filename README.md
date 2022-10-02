@@ -31,14 +31,8 @@ npm run client
 ProgradeX
 
 ## Details
-The project is built using the following tools
-- ![img1](https://github.com/ProgradeX/PCS-Complete-Stack/blob/master/Images/p1.png)
-- ![img2](https://github.com/ProgradeX/PCS-Complete-Stack/blob/master/Images/p2.png)
-- ![img3](https://github.com/ProgradeX/PCS-Complete-Stack/blob/master/Images/p3.png)
-- ![img4](https://github.com/ProgradeX/PCS-Complete-Stack/blob/master/Images/p4.png)
-
 Database Layout for Project 
-- ![img5](https://github.com/ProgradeX/PCS-Complete-Stack/blob/master/Images/p5.png)
+- ![img5](https://github.com/ProgradeX/PCS-Complete-Stack/blob/master/Images/p5.PNG)
 
 Web-App design with Json data
 - ![img6](https://github.com/ProgradeX/PCS-Complete-Stack/blob/master/Images/p6.png)
