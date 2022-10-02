@@ -30,8 +30,21 @@ npm run client
 ### Author
 ProgradeX
 
-### Version
+## Details
+The project is built using the following tools
+- ![img1](https://github.com/ProgradeX/)
+- ![img2](https://github.com/ProgradeX/)
+- ![img3](https://github.com/ProgradeX/)
+- ![img4](https://github.com/ProgradeX/)
 
+Database Layout for Project 
+- ![img5](https://github.com/ProgradeX/)
+
+Web-App design with Json data
+- ![img6](https://github.com/ProgradeX/)
+- ![img7](https://github.com/ProgradeX/)
+
+### Version
 1.0.0
 
 ### License
